@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#define N 10  
-#define M 10
+#define N 4  
+#define M 4
 
 void solve_cageots_de_fraise(int b[M][N])
 {
@@ -57,14 +57,23 @@ void remplir_matrice(int b[M][N]) {
     // Remplissage de la matrice avec des valeurs positives
     for (int i = 0; i < M; i++) {
         for (int j = 0; j < N; j++) {
-            b[i][j] = rand() % 100 + 1; // valeurs entre 1 et 100
+            b[i][j] = rand() % 15 + 1; // valeurs entre 1 et 100
         }
+    }
+}
+void afficher_matrice(int b[M][N]) {
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            printf("%3d ", b[i][j]);
+        }
+        printf("\n");
     }
 }
 int main(int argc, char *argvar[])
 {
     int b[M][N];
     remplir_matrice(b);
+    afficher_matrice(b);
     solve_cageots_de_fraise(b);
 }
 
