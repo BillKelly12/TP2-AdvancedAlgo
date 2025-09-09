@@ -1,10 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
-#define N 100
-#define M 100
-int main(int argc, char *argvar[])
-{
-}
+#include <time.h>
+#define N 10  
+#define M 10
 
 void solve_cageots_de_fraise(int b[M][N])
 {
@@ -34,4 +32,39 @@ void solve_cageots_de_fraise(int b[M][N])
             choixOpt[m][p] = argmax;
         }
     }
+    // Reconstruction de la solution
+    int repartition[M]; // combien de cageots pour chaque marché
+    int p = N;          // cageots restants à distribuer
+    for (int m = M - 1; m >= 0; --m) {
+        int choix = choixOpt[m][p]; // nb cageots donnés au marché m
+        repartition[m] = choix;
+        p -= choix; // on enlève les cageots attribués
+    }
+
+    // Affichage du résultat
+    printf("Bénéfice optimal = %.2f\n", Benef[N]);
+    printf("Répartition des cageots :\n");
+    for (int m = 0; m < M; ++m) {
+        printf(" Magasin %d : %d cageots\n", m, repartition[m]);
+    }
+    
+
 }
+void remplir_matrice(int b[M][N]) {
+    // Initialiser le générateur de nombres aléatoires
+    srand(time(NULL));
+
+    // Remplissage de la matrice avec des valeurs positives
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            b[i][j] = rand() % 100 + 1; // valeurs entre 1 et 100
+        }
+    }
+}
+int main(int argc, char *argvar[])
+{
+    int b[M][N];
+    remplir_matrice(b);
+    solve_cageots_de_fraise(b);
+}
+
