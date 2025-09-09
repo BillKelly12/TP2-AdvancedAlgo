@@ -6,7 +6,7 @@ int main(int argc, char *argvar[])
 {
 }
 
-void solve_cageots_de_fraise(int n, int m)
+void solve_cageots_de_fraise(int b[M][N])
 {
     int choixOpt[M][N + 1]; // Tableau des choix optimaux
     double Benef[N + 1];    // Benefice optimal ( en place , par ligne )
