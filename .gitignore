@@ -1,0 +1,23 @@
+# Binaires et exécutables
+*.o
+*.out
+*.exe
+*.a
+*.so
+*.dll
+
+# Fichiers générés par make ou CMake
+*.d
+*.dSYM/
+build/
+cmake-build-*/
+
+# Logs et temporaires
+*.log
+*.tmp
+*.swp
+*~
+
+# VSCode / autres IDE
+.vscode/
+.idea/
