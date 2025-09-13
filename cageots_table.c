@@ -3,10 +3,10 @@
 #include <time.h>
 #include <math.h>
 
-#define N 10000
-#define M 100
+#define N 10
+#define M 4
 
-/*
+
 void afficher_matrice(double *b) {
     for (int i = 0; i < M; i++) {
         for (int j = 0; j <= N; j++) {
@@ -15,7 +15,7 @@ void afficher_matrice(double *b) {
         printf("\n");
     }
 }
-*/
+
 
 void solve_cageots_de_fraise(double *b) {
     int *choixOpt = malloc(M * (N+1) * sizeof(int));
@@ -50,19 +50,19 @@ void solve_cageots_de_fraise(double *b) {
     }
 
     // Reconstruction solution
-    // int p = N;
-    // for (int m = M-1; m >= 0; --m) {
-    //     int choix = choixOpt[m*(N+1) + p];
-    //     repartition[m] = choix;
-    //     p -= choix;
-    // }
+    int p = N;
+    for (int m = M-1; m >= 0; --m) {
+        int choix = choixOpt[m*(N+1) + p];
+        repartition[m] = choix;
+        p -= choix;
+    }
 
-    // // Affichage du résultat
-    // printf("Bénéfice optimal = %.0f\n", Benef[N]);
-    // printf("Répartition des cageots :\n");
-    // for (int m = 0; m < M; ++m) {
-    //     printf(" Magasin %d : %d cageots\n", m, repartition[m]);
-    // }
+    // Affichage du résultat
+    printf("Bénéfice optimal = %.0f\n", Benef[N]);
+    printf("Répartition des cageots :\n");
+    for (int m = 0; m < M; ++m) {
+        printf(" Magasin %d : %d cageots\n", m, repartition[m]);
+    }
 
     // Libération mémoire
     free(choixOpt);
@@ -88,7 +88,7 @@ int main() {
     }
 
     remplir_matrice(b);
-    // afficher_matrice(b); // Décommenter si nécessaire
+    afficher_matrice(b); // Décommenter si nécessaire
     solve_cageots_de_fraise(b);
 
     free(b);
