@@ -47,10 +47,10 @@ void solve_cageots_de_fraise(double b[M*(N+1)]) {
     }
 
     // Affichage du résultat
-    printf("Bénéfice optimal = %.2f\n", Benef[N]);
+    printf("Bénéfice optimal = %4.0f\n", Benef[N]);
     printf("benef \n");
     for (int p = 0; p <= N; ++p) {
-        printf("%f ", Benef[p]);
+        printf("%4.0f ", Benef[p]);
     }
     printf("\n");
 
@@ -74,7 +74,7 @@ void remplir_matrice(double b[M*(N+1)]) {
 void afficher_matrice(double b[M*(N+1)]) {
     for (int i = 0; i < M; i++) {
         for (int j = 0; j <= N; j++) {
-            printf("%1f ", b[i * (N+1) +j]);
+            printf("%4.0f ", b[i * (N+1) +j]);
         }
         printf("\n");
     }
